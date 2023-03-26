@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -11,6 +11,10 @@ export class MenuComponent implements OnInit {
   menuLoginIsActive: boolean;
   menuForumIsActive: boolean;
   menuNewsAddIsActive: boolean;
+  menuAdministrationIsActive: boolean;
+  userIsAdmin:boolean = false;
+  @Output()
+  activateMenuItemEvent: EventEmitter<String> = new EventEmitter();
   constructor() {
     this.userName = "nie zalogowano";
     this.appName = "New and Big News API";
@@ -18,6 +22,7 @@ export class MenuComponent implements OnInit {
     this.menuLoginIsActive = false;
     this.menuForumIsActive = false;
     this.menuNewsAddIsActive = false;
+    this.menuAdministrationIsActive = false;
   }
   ngOnInit(): void {
     setTimeout(() => {
@@ -29,11 +34,12 @@ export class MenuComponent implements OnInit {
     this.menuLoginIsActive = false;
     this.menuForumIsActive = false;
     this.menuNewsAddIsActive = false;
+    this.menuAdministrationIsActive = false;
   }
-  activateMenuItem(menuItemName:string) {
+  activateMenuItem(menuItemName: string) {
     this.deactivateMenu();
-    switch(menuItemName) {
-      case 'START': 
+    switch (menuItemName) {
+      case 'START':
         this.menuStartIsActive = true;
         break;
       case 'LOGIN':
@@ -45,6 +51,10 @@ export class MenuComponent implements OnInit {
       case 'NEWSADD':
         this.menuNewsAddIsActive = true;
         break;
+      case 'ADMINISTRATION':
+        this.menuAdministrationIsActive = true;
+        break;
     }
+    this.activateMenuItemEvent.emit(menuItemName);
   }
 }

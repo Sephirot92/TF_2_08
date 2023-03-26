@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Czapraga-Lukasz-PR08';
+  activeMenuItem:String = "";
+
+  onActivateMenuItem(itemName:String) {
+    this.activeMenuItem = itemName;
+  }
 }
