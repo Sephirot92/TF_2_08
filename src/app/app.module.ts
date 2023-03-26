@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
+import { NewsListComponent } from './news-list/news-list.component';
+import { EditNewsComponent } from './edit-news/edit-news.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    HomeComponent
+    HomeComponent,
+    NewsListComponent,
+    EditNewsComponent
   ],
   imports: [
     BrowserModule,

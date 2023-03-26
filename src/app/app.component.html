@@ -1,3 +1,12 @@
-<app-menu></app-menu>
-<app-home></app-home>
+<app-menu (activateMenuItemEvent)="onActivateMenuItem($event)"></app-menu>
+<container-element [ngSwitch]="activeMenuItem">
+    <app-home *ngSwitchCase="'START'"></app-home>
+    <app-news-list *ngSwitchCase="'FORUM'"></app-news-list>
+    <app-edit-news *ngSwitchCase="'NEWSADD'"></app-edit-news>
+    <ng-container *ngSwitchCase="'ADMINISTRATION'">
+        <span>TODO: Administracja</span>
+    </ng-container>
+    <app-home *ngSwitchDefault>
+</app-home>
+</container-element>
 <router-outlet></router-outlet>
