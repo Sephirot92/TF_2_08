@@ -9,21 +9,21 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <ul class="nav nav-pills">
-                    <li class="nav-item" [class.active]="menuStartIsActive" (click)="activateMenuItem('START')">
-                        <a class="nav-link active" href="#">Start</a>
+                    <li class="nav-item" (click)="activateMenuItem('START')">
+                        <a class="nav-link active" [class.active]="menuStartIsActive" href="#">Start</a>
                     </li>
-                    <li class="nav-item" [class.active]="menuLoginIsActive" (click)="activateMenuItem('LOGIN')">
-                        <a class="nav-link" href="#">Logowanie</a>
+                    <li class="nav-item" (click)="activateMenuItem('LOGIN')">
+                        <a class="nav-link" [class.active]="menuLoginIsActive" href="#">Logowanie</a>
                     </li>
-                    <li class="nav-item" [class.active]="menuForumIsActive" (click)="activateMenuItem('FORUM')">
-                        <a class="nav-link" href="#">Forum</a>
+                    <li class="nav-item" (click)="activateMenuItem('FORUM')">
+                        <a class="nav-link" [class.active]="menuForumIsActive" href="#">Forum</a>
                     </li>
-                    <li class="nav-item" [class.active]="menuNewsAddIsActive" (click)="activateMenuItem('NEWSADD')">
-                        <a class="nav-link" href="#"> Dodaj nowy temat</a>
+                    <li class="nav-item" (click)="activateMenuItem('NEWSADD')">
+                        <a class="nav-link" [class.active]="menuNewsAddIsActive" href="#"> Dodaj nowy temat</a>
                     </li>
-                    <li *ngIf="userIsAdmin" class="nav-item" [class.active]="menuAdministrationIsActive"
+                    <li *ngIf="userIsAdmin" class="nav-item" 
                         (click)="activateMenuItem('ADMINISTRATION')">
-                        <a class="nav-link" href="#"> Administracja</a>
+                        <a class="nav-link" [class.active]="menuAdministrationIsActive" href="#"> Administracja</a>
                     </li>
                 </ul>
             </div>
