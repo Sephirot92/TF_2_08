@@ -1,4 +1,4 @@
-export class CommentsItem {
+export class CommentItem {
     id: Number;
     newsId:Number;
     title: String;

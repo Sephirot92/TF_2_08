@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CommentItem } from '../domain/CommentItem';
 import { NewsItem } from '../domain/NewsItem';
 import { RestConfig } from './rest-config';
 
@@ -34,6 +35,12 @@ export class NewsApiClientService {
     this.httpClient.get<Array<NewsItem>>(`${RestConfig.apiUrl}/news/list`).subscribe((data: Array<NewsItem>) => {
       callback(data);
     });
+  }
+
+  getCommentsList(id:Number, callback:Function) {
+    this.httpClient.get<Array<CommentItem>>(`${RestConfig.apiUrl}/news/commentsList/${id}`).subscribe((data: Array<CommentItem>) => {
+      callback(data);
+    } )
   }
 }
 

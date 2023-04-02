@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { LoggedUser } from '../domain/LoggedUser';
+import { UserInfoService } from '../services/UserInfoService';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -12,10 +14,10 @@ export class MenuComponent implements OnInit {
   menuForumIsActive: boolean;
   menuNewsAddIsActive: boolean;
   menuAdministrationIsActive: boolean;
-  userIsAdmin:boolean = false;
+  userIsAdmin:Boolean = false;
   @Output()
   activateMenuItemEvent: EventEmitter<String> = new EventEmitter();
-  constructor() {
+  constructor(private userInfoService: UserInfoService) {
     this.userName = "nie zalogowano";
     this.appName = "New and Big News API";
     this.menuStartIsActive = false;
@@ -25,8 +27,10 @@ export class MenuComponent implements OnInit {
     this.menuAdministrationIsActive = false;
   }
   ngOnInit(): void {
+    let userInfo: LoggedUser = this.userInfoService.getLoggedUserData();
     setTimeout(() => {
-      this.userName = "Jan Kowalski";
+      this.userName = userInfo.fullname();
+      this.userIsAdmin = userInfo.isAdmin;
     }, 5000);
   }
   deactivateMenu(): void {
