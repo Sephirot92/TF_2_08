@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { CommentItem } from '../domain/CommentItem';
 import { NewsItem } from '../domain/NewsItem';
 import { RestConfig } from './rest-config';
+import { NewsApiResponse } from '../domain/NewsApiResponse';
 
 
 @Injectable({
@@ -37,10 +38,16 @@ export class NewsApiClientService {
     });
   }
 
-  getCommentsList(id:Number, callback:Function) {
+  getCommentsList(id: Number, callback: Function) {
     this.httpClient.get<Array<CommentItem>>(`${RestConfig.apiUrl}/news/commentsList/${id}`).subscribe((data: Array<CommentItem>) => {
       callback(data);
-    } )
+    })
+  }
+
+  addNews(newsItem: NewsItem, callback: Function) {
+    this.httpClient.post<NewsApiResponse>(`${RestConfig.apiUrl}/news/add/`, newsItem).subscribe((data: NewsApiResponse) => {
+      callback(data);
+    });
   }
 }
 

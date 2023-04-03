@@ -1,1 +1,56 @@
-<p>edit-news works!</p>
+<form #createnewsForm="ngForm" (ngSubmit)="addNews(createnewsForm)">
+    <div class="card p2" style="width: 100%;">
+        <div class="card-body">
+            <h5 class="card-title">Dodawanie newsa [{{headerElem.value}}]</h5>
+            <div class="form-group">
+                <label for="header">Nagłówek</label>
+                <input type="email" class="form-control" id="header" name="header" #headerElem="ngModel"
+                    [(ngModel)]="newsItem.header" required minlength="5" placeholder="Podaj nagłówek">
+
+                    <div *ngIf="headerElem.invalid && (headerElem.dirty || headerElem.touched)" class="alert alert-danger">
+                        <div *ngIf="(headerElem.errors && headerElem.errors?.['required'])">
+                            Pole jest wymagane
+                        </div>
+                        <div *ngIf="(headerElem.errors && headerElem.errors?.['minlength'])">
+                            Nagłówek powinien mieć co najmniej 5 znaków
+                        </div>
+                    </div>
+
+                <div class="form-group">
+                    <label for="title">Tytuł</label>
+                    <input type="email" class="form-control" id="title" name="title" #titleElem="ngModel" required
+                        minlength="5" [(ngModel)]="newsItem.title" placeholder="Podaj tytuł">
+                    <div *ngIf="titleElem.invalid && (titleElem.dirty || titleElem.touched)" class="alert alert-danger">
+                        <div *ngIf="(titleElem.errors && titleElem.errors?.['required'])">
+                            Pole jest wymagane
+                        </div>
+                        <div *ngIf="(titleElem.errors && titleElem.errors?.['minlength'])">
+                            Tytuł powinien mieć co najmniej 5 znaków
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="content">Treść</label>
+                    <textarea class="form-control" id="content" name="content" required minlength="10"  maxlength=512 rows="3" #textContentElem="ngModel" [(ngModel)]="newsItem.content"
+                        placeholder="Podaj treść"></textarea>
+                    
+                        <div *ngIf="textContentElem.invalid && (textContentElem.dirty || textContentElem.touched)" class="alert alert-danger">
+                            <div *ngIf="(textContentElem.errors && textContentElem.errors?.['required'])">
+                                Pole jest wymagane
+                            </div>
+                            <div *ngIf="(textContentElem.errors && textContentElem.errors?.['minlength'])">
+                                Nagłówek powinien mieć co najmniej 10 znaków
+                            </div>
+                            <div *ngIf="(textContentElem.errors && textContentElem.errors?.['maxlength'])">
+                                Nagłówek powinien mieć co najwyżej 512 znaków ze spacjami. 
+                            </div>
+                        </div>
+
+                </div>
+                <button type="button" class="btn btn-secondary m-1" [disabled]="!createnewsForm.dirty" (click)="createnewsForm.resetForm()">Wyczyść</button>
+                <button type="submit" class="btn btn-primary m-1" [disabled]="!createnewsForm.form.valid">Zapisz</button>
+            </div>
+        </div>
+    </div>
+</form>

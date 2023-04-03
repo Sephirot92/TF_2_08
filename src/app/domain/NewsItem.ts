@@ -14,4 +14,8 @@ export class NewsItem {
         this.author = "";
         this.img = "";
     }
+
+    setAuthor(author: String) {
+        this.author = author;
+    }
 }
