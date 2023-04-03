@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { NewsListComponent } from './news-list/news-list.component';
 import { EditNewsComponent } from './edit-news/edit-news.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -8,6 +8,7 @@
                     <th scope="col">Nagłówek</th>
                     <th scope="col">Tytuł</th>
                     <th scope="col">Autor</th>
+                    <th scope="col">Zawartość</th>
                 </tr>
             </thead>
             <tbody>
@@ -16,8 +17,10 @@
                     <td>{{newsItem.header}}</td>
                     <td>{{newsItem.title}}</td>
                     <td>{{newsItem.author}}</td>
+                    <td>{{newsItem.content}}</td>
                     <td><a href="#" (click)="showDetails(newsItem)">Szczegóły</a></td>
                 </tr>
+
         </table>
         <table *ngIf="commentItemsList" class="table">
             <thead>
