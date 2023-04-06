@@ -1,0 +1,15 @@
+<form #createCommentForm="ngForm" (ngSubmit)="addComment()">
+    <div class="card p2" style="width: 100%;">
+        <div class="card-body">
+            <h5 class="card-title">Komentarz</h5>
+            <div class="form-group">
+
+
+                <textarea class="form-control" #textContentElem="ngModel" [(ngModel)]="commentItem.content" id="content" name="content" required minlength="10" maxlength=512
+                    rows="3" placeholder="Podaj treść"></textarea>
+
+                <button type="submit" class="btn btn-primary m-1">Dodaj komentarz</button>
+            </div>
+        </div>
+    </div>
+</form>

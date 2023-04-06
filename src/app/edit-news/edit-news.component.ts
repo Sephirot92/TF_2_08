@@ -5,6 +5,7 @@ import { ViewChild, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { NewsApiResponse } from '../domain/NewsApiResponse';
 import { NewsApiClientService } from '../services/news-api-client.service';
+import { Router } from '@angular/router';
 
 
 
@@ -19,7 +20,9 @@ export class EditNewsComponent  implements OnInit {
 
   newsItem: NewsItem;
 
-  constructor(private userInfoService:UserInfoService, private newsApiClientService: NewsApiClientService) {
+  constructor(  private userInfoService:UserInfoService, 
+                private newsApiClientService: NewsApiClientService,
+                private router:Router) {
     this.newsItem = new NewsItem();
     this.newsItem.setAuthor(this.userInfoService.getLoggedUserData().fullname());
   }
@@ -32,7 +35,7 @@ export class EditNewsComponent  implements OnInit {
 
   addNews(form: NgForm) {
     this.newsApiClientService.addNews(this.newsItem, (response: NewsApiResponse) => {
-      form.resetForm()
+      this.router.navigate(['/news/list']);
     })
   }
 }
