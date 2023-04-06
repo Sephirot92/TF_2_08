@@ -10,6 +10,7 @@ import { NewsListComponent } from './news-list/news-list.component';
 import { EditNewsComponent } from './edit-news/edit-news.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { AddCommentComponent } from './add-comment/add-comment.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     MenuComponent,
     HomeComponent,
     NewsListComponent,
-    EditNewsComponent
+    EditNewsComponent,
+    AddCommentComponent
   ],
   imports: [
     BrowserModule,

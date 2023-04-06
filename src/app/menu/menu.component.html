@@ -10,16 +10,16 @@
             <div class="navbar-nav">
                 <ul class="nav nav-pills">
                     <li class="nav-item" (click)="activateMenuItem('START')">
-                        <a class="nav-link active" [class.active]="menuStartIsActive" href="#">Start</a>
+                        <a class="nav-link active" [class.active]="menuStartIsActive" href="/home">Start</a>
                     </li>
                     <li class="nav-item" (click)="activateMenuItem('LOGIN')">
                         <a class="nav-link" [class.active]="menuLoginIsActive" href="#">Logowanie</a>
                     </li>
                     <li class="nav-item" (click)="activateMenuItem('FORUM')">
-                        <a class="nav-link" [class.active]="menuForumIsActive" href="#">Forum</a>
+                        <a class="nav-link" [class.active]="menuForumIsActive" href="news/list">Forum</a>
                     </li>
                     <li class="nav-item" (click)="activateMenuItem('NEWSADD')">
-                        <a class="nav-link" [class.active]="menuNewsAddIsActive" href="#"> Dodaj nowy temat</a>
+                        <a class="nav-link" [class.active]="menuNewsAddIsActive" href="news/add"> Dodaj nowy temat</a>
                     </li>
                     <li *ngIf="userIsAdmin" class="nav-item" 
                         (click)="activateMenuItem('ADMINISTRATION')">

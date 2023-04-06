@@ -18,25 +18,17 @@
                     <td>{{newsItem.title}}</td>
                     <td>{{newsItem.author}}</td>
                     <td>{{newsItem.content}}</td>
-                    <td><a href="#" (click)="showDetails(newsItem)">Szczegóły</a></td>
+                    <td><a class="blue" (click)="showDetails(newsItem)">Szczegóły</a></td>
+                    <td><a routerLink="/comment/add/{{newsItem.id}}">Dodaj swój komentarz!</a></td>
                 </tr>
 
-        </table>
-        <table *ngIf="commentItemsList" class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Lp.</th>
-                    <th scope="col">Autor</th>
-                    <th scope="col">Content</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let commentItem of commentItemsList; let i=index;">
-                    <td>{{i+1}}</td>
-                    <td>{{commentItem.author}}</td>
-                    <td>{{commentItem.content}}</td>
-                </tr>
-        </table>
+                <div class="card-body">
+                    <h5 class="card-title">Komentarze do newsa</h5>
+                    <div *ngFor="let commentItem of commentItemsList;">
+                        <div class="alert alert-primary" role="alert">
+                            {{commentItem.author}}: {{commentItem.content}}
+                            <button class="btn btn-danger" (click)="deleteComment(commentItem)">Usuń</button>
+                        </div>
 
-    </div>
-</div>
+                    </div>
+                </div>

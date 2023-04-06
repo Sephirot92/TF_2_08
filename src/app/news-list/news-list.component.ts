@@ -28,5 +28,13 @@ export class NewsListComponent implements OnInit {
     });
   }
 
+  deleteComment(commentItem: CommentItem) {
+    this.newsApiClientService.deleteComment(commentItem, () => {
+      this.newsApiClientService.getCommentsList(commentItem.newsId, (commentItemsList:
+        Array<CommentItem>) => {
+        this.commentItemsList = commentItemsList;
+      });
+    });
+  }
 }
 

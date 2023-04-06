@@ -49,5 +49,16 @@ export class NewsApiClientService {
       callback(data);
     });
   }
+
+  addComment(commentItem: CommentItem, callback: Function) {
+    this.httpClient.post<NewsApiResponse>(`${RestConfig.apiUrl}/comments/add`, commentItem).subscribe((data: NewsApiResponse) => { callback(data) }
+    )
+  }
+
+  deleteComment(commentItem: CommentItem, callback:Function) {
+    this.httpClient.delete<NewsApiResponse>(`${RestConfig.apiUrl}/comments/remove/${commentItem.id}`).subscribe((data:NewsApiResponse) => {
+      callback(data);
+    })
+  }
 }
 
